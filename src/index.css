@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+    --color-bg-body: var(--bg-body);
+    --color-bg-card: var(--bg-card);
+    --color-bg-card-hover: var(--bg-card-hover);
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-border-card: var(--border-card);
+    --color-primary-accent: var(--primary-accent);
+}
+
+:root {
+    /* Light Mode Defaults */
+    --bg-body: #f1f5f9;
+    /* Slate 100 */
+    --bg-card: #ffffff;
+    /* White */
+    --bg-card-hover: #f8fafc;
+    /* Slate 50 */
+    --text-primary: #0f172a;
+    /* Slate 900 */
+    --text-secondary: #475569;
+    /* Slate 600 */
+    --border-card: #e2e8f0;
+    /* Slate 200 */
+    --primary-accent: #0ea5e9;
+    /* Sky 500 */
+}
+
+.dark {
+    /* Dark Mode Overrides */
+    --bg-body: #020617;
+    /* Slate 950 */
+    --bg-card: #0f172a;
+    /* Slate 900 */
+    --bg-card-hover: #1e293b;
+    /* Slate 800 */
+    --text-primary: #f8fafc;
+    /* Slate 50 */
+    --text-secondary: #94a3b8;
+    /* Slate 400 */
+    --border-card: #1e293b;
+    /* Slate 800 */
+    --primary-accent: #38bdf8;
+    /* Sky 400 */
+}
+
+@layer base {
+    body {
+        background-color: var(--bg-body);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+}
+
+@layer utilities {
+    .animate-marquee {
+        animation: marquee 25s linear infinite;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes spin-slow {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
