@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code, Database, Globe, Cpu, Smartphone, Shield } from "lucide-react";
-import profileImage from "../assets/images.jpeg";
+import profileImage from "../assets/IMG_1582.jpg";
 
 export default function Home() {
     const floatingIcons = [
