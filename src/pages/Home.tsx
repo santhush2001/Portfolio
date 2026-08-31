@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Code, Database, Globe, Cpu, Smartphone, Shield } from "lucide-react";
+import { ArrowRight, Code, Database, Globe, Cpu, Smartphone, Shield, Sparkles } from "lucide-react";
 import profileImage from "../assets/IMG_1582.jpg";
 
 export default function Home() {
+    const cvUrl = new URL("../assets/Santhushcv.pdf", import.meta.url).toString();
+
     const floatingIcons = [
         { Icon: Code, delay: 0, x: 20, y: -20 },
         { Icon: Database, delay: 2, x: -30, y: 40 },
@@ -14,87 +16,112 @@ export default function Home() {
         "React", "Tailwind CSS", "Flutter", "Laravel", "Firebase", "Python", "OpenCV", "IoT", "Cybersecurity", "Git", "Figma"
     ];
 
+    const expertise = [
+        { icon: Globe, title: "Full-Stack Development", desc: "Responsive frontends and scalable product experiences built with React and modern web tools." },
+        { icon: Cpu, title: "AI & Computer Vision", desc: "Practical AI solutions, automation, and intelligent systems using Python and OpenCV." },
+        { icon: Shield, title: "Cybersecurity", desc: "Security-focused thinking with networking and digital safety fundamentals." },
+    ];
+
     return (
-        <div className="min-h-screen">
-            {/* Hero Section */}
+        <div className="min-h-screen relative overflow-hidden">
+            <div className="pointer-events-none absolute inset-0 grid-overlay opacity-30" />
+
             <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
-                {/* Background Gradients */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-                    <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--primary-accent)]/10 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-500/10 rounded-full blur-[120px]" />
+                <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+                    <div className="floating-orb left-[-8%] top-[10%] h-72 w-72 bg-sky-400/20" />
+                    <div className="floating-orb right-[-6%] top-[18%] h-80 w-80 bg-violet-500/15" />
+                    <div className="floating-orb bottom-[-10%] left-[20%] h-96 w-96 bg-cyan-400/10" />
                 </div>
 
-                <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-                    {/* Left: Content */}
+                <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="text-center lg:text-left order-2 lg:order-1"
                     >
-                        <h2 className="text-[var(--primary-accent)] font-medium text-lg mb-4 tracking-widest uppercase flex items-center justify-center lg:justify-start gap-2">
-                            <span className="w-8 h-[2px] bg-[var(--primary-accent)]"></span>
-                            Hello, I'm
-                        </h2>
-                        <h1 className="text-5xl md:text-7xl font-bold text-[var(--text-primary)] mb-6 tracking-tight leading-tight">
-                            Santhusha <br className="hidden lg:block" /> Lakshan
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border-card)] bg-[var(--bg-card)]/75 text-[var(--primary-accent)] text-xs font-semibold uppercase tracking-[0.28em] backdrop-blur-xl">
+                            <Sparkles size={14} />
+                            Software Developer
+                        </div>
+
+                        <h1 className="mt-6 text-5xl md:text-6xl xl:text-7xl font-black tracking-[-0.05em] text-[var(--text-primary)] leading-[0.95]">
+                            Santhusha <span className="text-[var(--primary-accent)]">Lakshan</span>
                         </h1>
 
-                        <div className="mb-8">
-                            <h3 className="text-xl md:text-2xl text-[var(--text-secondary)] font-light mb-2">
-                                Software Developer <span className="opacity-50 mx-2">|</span> AI & Cybersecurity
+                        <div className="mt-6 mb-8">
+                            <h3 className="text-xl md:text-2xl text-[var(--text-secondary)] font-light tracking-wide">
+                                Full-stack developer building intelligent, secure, and user-focused digital experiences.
                             </h3>
-                            <p className="text-[var(--primary-accent)] text-lg font-medium bg-[var(--primary-accent)]/10 inline-block px-4 py-1 rounded-full border border-[var(--primary-accent)]/20">
+                            <p className="mt-4 inline-flex rounded-full border border-[var(--primary-accent)]/20 bg-[var(--primary-accent)]/10 px-4 py-2 text-sm font-medium text-[var(--primary-accent)]">
                                 Undergraduate at SIBA Campus, Pallekale
                             </p>
                         </div>
 
-                        <p className="max-w-xl mx-auto lg:mx-0 text-[var(--text-secondary)] text-lg mb-10 leading-relaxed">
-                            Crafting seamless digital experiences by bridging the gap between web, mobile, intelligent systems, and cybersecurity.
-                            Turning complex ideas into elegant, functional software.
+                        <p className="max-w-xl mx-auto lg:mx-0 text-[var(--text-secondary)] text-lg leading-relaxed">
+                            I design and develop modern web and mobile solutions, explore AI-powered systems, and build projects that combine functionality, usability, and security.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
                             <Link
                                 to="/projects"
-                                className="px-8 py-3 rounded-full bg-[var(--primary-accent)] hover:opacity-90 text-white font-semibold transition-all transform hover:scale-105 flex items-center gap-2 shadow-lg shadow-[var(--primary-accent)]/20"
+                                className="px-8 py-3 rounded-full bg-[var(--primary-accent)] hover:opacity-90 text-white font-semibold transition-all transform hover:-translate-y-0.5 flex items-center gap-2 shadow-[0_12px_30px_rgba(14,165,233,0.25)]"
                             >
-                                View Projects <ArrowRight size={20} />
+                                View Projects <ArrowRight size={18} />
                             </Link>
+                            <a
+                                href={cvUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                download
+                                className="px-8 py-3 rounded-full border border-[var(--border-card)] bg-[var(--bg-card)]/70 text-[var(--text-primary)] font-semibold transition-all hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)]"
+                            >
+                                Download CV
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/santhusha-lakshan-31a272321/details/certifications/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-3 rounded-full border border-[var(--border-card)] bg-[var(--bg-card)]/70 text-[var(--text-primary)] font-semibold transition-all hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)]"
+                            >
+                                View Certifications
+                            </a>
                             <Link
                                 to="/contact"
-                                className="px-8 py-3 rounded-full bg-transparent border border-[var(--text-secondary)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-[var(--text-secondary)] font-semibold transition-all transform hover:scale-105"
+                                className="px-8 py-3 rounded-full border border-[var(--border-card)] bg-[var(--bg-card)]/70 text-[var(--text-primary)] font-semibold transition-all hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)]"
                             >
                                 Contact Me
                             </Link>
                         </div>
                     </motion.div>
 
-                    {/* Right: Visual */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
-                        className="relative order-1 lg:order-2 flex justify-center"
+                        className="relative order-1 lg:order-2 flex justify-center hero-3d-shell"
                     >
-                        <div className="relative w-72 h-72 md:w-96 md:h-96">
-                            {/* Main Profile Image Circle */}
-                            <div className="w-full h-full rounded-full border-4 border-[var(--bg-card)] shadow-2xl overflow-hidden relative z-10 bg-[var(--bg-card)]">
-                                {/* Placeholder Avatar */}
-                                <img
-                                    src={profileImage}
-                                    alt="Santhusha Lakshan"
-                                    className="w-full h-full object-cover"
-                                />
+                        <div className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px]">
+                            <div className="absolute inset-[12%] rounded-[2rem] bg-[var(--primary-accent)]/10 blur-[80px]" />
+                            <div className="absolute inset-[6%] rounded-[2rem] border border-[var(--border-card)] bg-[var(--bg-card)]/60 backdrop-blur-xl rotate-3 shadow-[0_25px_80px_rgba(15,23,42,0.12)]" />
+                            <div className="absolute inset-[9%] rounded-[2rem] border border-[var(--border-card)] bg-[var(--bg-card)]/80 backdrop-blur-xl -rotate-6 shadow-[0_25px_80px_rgba(15,23,42,0.12)]" />
+
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="relative w-[250px] h-[250px] md:w-[320px] md:h-[320px] rounded-[2rem] overflow-hidden border border-[var(--border-card)] shadow-[0_25px_80px_rgba(14,165,233,0.2)] bg-[var(--bg-card)]">
+                                    <img
+                                        src={profileImage}
+                                        alt="Santhusha Lakshan"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                             </div>
 
-                            {/* Floating Elements */}
                             {floatingIcons.map((item, index) => (
                                 <motion.div
                                     key={index}
                                     animate={{
                                         y: [item.y, item.y - 20, item.y],
-                                        rotate: [0, 5, -5, 0]
+                                        rotate: [0, 6, -6, 0]
                                     }}
                                     transition={{
                                         duration: 4,
@@ -102,91 +129,76 @@ export default function Home() {
                                         ease: "easeInOut",
                                         delay: item.delay
                                     }}
-                                    className="absolute z-20 p-4 bg-[var(--bg-card)] rounded-2xl shadow-xl border border-[var(--border-card)] text-[var(--primary-accent)]"
+                                    className="absolute z-20 flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--border-card)] bg-[var(--bg-card)]/80 shadow-[0_18px_40px_rgba(15,23,42,0.1)] text-[var(--primary-accent)] backdrop-blur-xl"
                                     style={{
                                         top: item.y > 0 ? undefined : '10%',
-                                        bottom: item.y > 0 ? '10%' : undefined,
-                                        left: item.x < 0 ? '0%' : undefined,
-                                        right: item.x > 0 ? '0%' : undefined
+                                        bottom: item.y > 0 ? '12%' : undefined,
+                                        left: item.x < 0 ? '4%' : undefined,
+                                        right: item.x > 0 ? '4%' : undefined
                                     }}
                                 >
-                                    <item.Icon size={32} />
+                                    <item.Icon size={28} />
                                 </motion.div>
                             ))}
 
-                            {/* Orbit Circle */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-[var(--primary-accent)]/20 rounded-full -z-10 animate-spin-slow" />
+                            <div className="absolute inset-[18%] rounded-full border border-[var(--primary-accent)]/20 animate-spin-slow" />
+                            <div className="absolute inset-[8%] rounded-full border border-[var(--primary-accent)]/10" />
                         </div>
                     </motion.div>
                 </div>
 
-                {/* Scroll Indicator */}
                 <motion.div
                     animate={{ y: [0, 10, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[var(--text-secondary)]"
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--text-secondary)]"
                 >
                     <div className="flex flex-col items-center gap-2">
-                        <span className="text-xs uppercase tracking-widest opacity-50">Scroll</span>
-                        <div className="w-1 h-12 rounded-full bg-[var(--border-card)] overflow-hidden">
+                        <span className="text-[10px] uppercase tracking-[0.3em] opacity-60">Scroll</span>
+                        <div className="w-px h-12 bg-[var(--border-card)] overflow-hidden">
                             <motion.div
-                                animate={{ y: [-20, 20] }}
+                                animate={{ y: [-20, 40] }}
                                 transition={{ duration: 1.5, repeat: Infinity }}
-                                className="w-full h-1/2 bg-[var(--primary-accent)] rounded-full"
+                                className="w-full h-10 bg-[var(--primary-accent)] rounded-full"
                             />
                         </div>
                     </div>
                 </motion.div>
             </section>
 
-            {/* Tech Stack Marquee */}
-            <section className="py-10 bg-[var(--bg-card)] border-y border-[var(--border-card)] overflow-hidden">
+            <section className="border-y border-[var(--border-card)] bg-[var(--bg-card)]/70 py-8 backdrop-blur-xl">
                 <div className="flex w-max animate-marquee">
                     {[...technologies, ...technologies, ...technologies].map((tech, i) => (
-                        <span key={i} className="mx-8 text-2xl font-bold text-[var(--text-secondary)]/30 uppercase hover:text-[var(--primary-accent)] transition-colors cursor-default">
+                        <span key={i} className="mx-8 text-sm font-semibold uppercase tracking-[0.25em] text-[var(--text-secondary)]/55">
                             {tech}
                         </span>
                     ))}
                 </div>
             </section>
 
-            {/* Services / What I Do */}
-            <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--bg-body)]">
+            <section className="py-24 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-4">What I Do</h2>
-                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">Combining technical expertise with creative problem solving.</p>
+                    <div className="mb-12 text-center">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--primary-accent)]">Capabilities</p>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)]">What I build</h2>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[
-                            { icon: Globe, title: "Web Development", desc: "Building responsive, modern web applications with React, Laravel and Tailwind CSS." },
-                            { icon: Smartphone, title: "Mobile Apps", desc: "Creating cross-platform mobile experiences for iOS and Android using Flutter." },
-                            { icon: Cpu, title: "AI Solutions", desc: "Developing intelligent systems using Python, OpenCV, and modern AI integrations." },
-                            { icon: Shield, title: "Cybersecurity", desc: "Ensuring digital safety with ethical hacking, network security, and secure coding practices." }
-                        ].map((service, index) => (
+                    <div className="grid gap-8 md:grid-cols-3">
+                        {expertise.map((item, index) => (
                             <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
+                                key={item.title}
+                                initial={{ opacity: 0, y: 25 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.2 }}
-                                className="p-8 bg-[var(--bg-card)] rounded-2xl border border-[var(--border-card)] hover:border-[var(--primary-accent)] transition-all hover:-translate-y-2 shadow-sm"
+                                transition={{ delay: index * 0.15 }}
+                                viewport={{ once: true }}
+                                className="glass-panel project-card rounded-[1.75rem] p-8"
                             >
-                                <div className="w-14 h-14 bg-[var(--primary-accent)]/10 rounded-xl flex items-center justify-center text-[var(--primary-accent)] mb-6">
-                                    <service.icon size={32} />
+                                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--primary-accent)]/10 text-[var(--primary-accent)]">
+                                    <item.icon size={28} />
                                 </div>
-                                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">{service.title}</h3>
-                                <p className="text-[var(--text-secondary)] leading-relaxed">
-                                    {service.desc}
-                                </p>
+                                <h3 className="mb-3 text-xl font-bold text-[var(--text-primary)]">{item.title}</h3>
+                                <p className="text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
-                    </div>
-
-                    <div className="mt-16 text-center">
-                        <Link to="/about" className="text-[var(--primary-accent)] font-medium hover:underline inline-flex items-center gap-2">
-                            Learn more about my skills <ArrowRight size={16} />
-                        </Link>
                     </div>
                 </div>
             </section>

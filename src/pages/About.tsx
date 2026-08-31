@@ -6,7 +6,6 @@ export default function About() {
     return (
         <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-                {/* Intro */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -14,16 +13,17 @@ export default function About() {
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-[var(--text-primary)] mb-6">About Me</h2>
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--primary-accent)]">About</p>
+                    <h2 className="text-3xl md:text-5xl font-bold text-[var(--text-primary)] mb-6">Developer with a problem-solving mindset</h2>
                     <div className="w-24 h-1 bg-[var(--primary-accent)] mx-auto mb-8 rounded-full"></div>
-                    <p className="text-[var(--text-secondary)] text-lg leading-relaxed max-w-3xl mx-auto">
-                        I am a passionate Software Developer with a diverse skillset spanning from mobile apps to AI-driven solutions.
-                        I enjoy problem-solving and building efficient, scalable applications. My journey involves everything from
-                        building cross-platform apps with Flutter to exploring the depths of Computer Vision, AI, and Cybersecurity.
+                    <p className="text-[var(--text-secondary)] text-lg leading-relaxed max-w-4xl mx-auto">
+                        I am a software developer focused on building practical digital solutions that combine full-stack development, AI-driven thinking, and cybersecurity awareness. My work spans web applications, mobile experiences, intelligent systems, and secure problem-solving.
+                    </p>
+                    <p className="mt-6 text-[var(--text-secondary)] text-lg leading-relaxed max-w-4xl mx-auto">
+                        I enjoy transforming ideas into functional products, whether that means building responsive applications with React, exploring computer vision with Python, or designing simple but effective systems for real-world use. I am continuously learning, building, and refining my technical skills through projects, internships, and certifications.
                     </p>
                 </motion.div>
 
-                {/* Skills Grid */}
                 <div className="mb-24">
                     <h3 className="text-2xl font-bold text-[var(--primary-accent)] mb-10 flex items-center gap-2">
                         Technical Skills
@@ -60,7 +60,6 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Education & Certifications */}
                 <div>
                     <h3 className="text-2xl font-bold text-[var(--primary-accent)] mb-10">
                         Education & Certifications
@@ -72,7 +71,7 @@ export default function About() {
                                 type: "Education",
                                 title: "Bachelor of Science in Information Technology",
                                 subtitle: "SIBA Campus",
-                                items: ["Undergraduate", "https://siba.edu.lk/"],
+                                items: ["Undergraduate Student", "https://siba.edu.lk/"],
                                 color: "var(--primary-accent)"
                             },
                             {
@@ -84,9 +83,16 @@ export default function About() {
                             },
                             {
                                 type: "Certification",
-                                title: "Networking Academy",
-                                subtitle: "Cisco Certified",
-                                items: ["Ethical Hacker", "Introduction to Cybersecurity"],
+                                title: "Cisco Networking & Cybersecurity Certifications",
+                                subtitle: "Cisco Networking Academy",
+                                items: ["Junior Cybersecurity Analyst Career Path", "CCNA: Introduction to Networks", "Introduction to Cybersecurity", "Ethical Hacker", "IT Essentials"],
+                                color: "var(--primary-accent)"
+                            },
+                            {
+                                type: "Certification",
+                                title: "AI & Programming Fundamentals",
+                                subtitle: "Cisco / University of Moratuwa",
+                                items: ["Introduction to Modern AI", "Python Essentials 1", "Python for Beginners"],
                                 color: "var(--primary-accent)"
                             }
                         ].map((edu, index) => (
